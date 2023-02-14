@@ -1,0 +1,103 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #091921;
+    cursor: pointer;
+}
+.analog{
+    background: url('clockimage.jpeg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border: 4px solid #091921;
+    border-radius: 50%;
+    box-shadow: 0 -15px 15px rgba(255,255,255,0.05),
+                inset 0 -10px 15px rgba(255,255,255,0.05),
+                0 15px 15px rgba(0,0,0,0.3),
+                inset 0 15px 15px rgba(0,0,0,0.3);
+}
+.analog::before{
+    content: '';
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    background-color: white;
+    border-radius:50%;
+    z-index: 99;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+
+/*general needle*/
+
+.needle{
+    --rotation:0;   /* runtime deg changing using js*/
+    position: absolute;
+    left:50%;
+    bottom: 50%;
+    transform: translate(-50%) rotate(calc(var(--rotation)*1deg));
+    transform-origin: bottom; 
+    border-radius: 6px;
+}
+
+.sec{
+    width:2.5px;
+    height: 35%;
+    background-color: turquoise;
+}
+.hr{
+    width: 8px;
+    height: 70px;
+    background: #ff105e;
+}
+.min{
+    width: 4px;
+    height: 90px;
+    background:white;
+}
+  
+
+
+
+/* digital */
+
+@font-face {
+    font-family:digital-7 ;
+    src: url(digital-7.ttf);
+}
+.digital{
+    position: relative;
+}
+.digital .digitaltime{
+    font-family: digital-7;
+    color: white;
+    font-size: 50px;
+    margin-top: 50px;
+    display: flex;
+    gap:2px;
+}
+ .h::before,.m::before,.s::before{
+    content: '8';
+    position:absolute;
+    color:rgba(255, 255, 255, 0.1);
+}  
+.digitaltime div{
+    width: 30px; 
+    /* background-color: #ff105e; */
+}
+.digitaltime .colon{
+   text-align: center;
+}
